@@ -25,6 +25,7 @@ def main():
 
     running = True
 
+    # TODO: Change the main manu, adding a registration process
     while running:
         print(menu)
         user_input = input("Enter your choice: ")

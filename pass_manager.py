@@ -14,7 +14,6 @@ class PassManager:
             file.write(self.key)
 
     def load_key(self, path):
-        # TODO: validation of values
         with open(path, 'rb') as file:
             self.key = file.read()
 
