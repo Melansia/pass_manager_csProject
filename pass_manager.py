@@ -19,6 +19,11 @@ class PassManager:
 
     def create_password_file(self, path, initial_values=None):
         self.password_file = path
+        try:
+            with open(path, 'x') as file:
+                file.close()
+        except FileExistsError:
+            print("File already exists")
 
         if initial_values is not None:
             for key, value in initial_values.items():
@@ -41,4 +46,7 @@ class PassManager:
                 file.write(site + ':' + encrypted.decode() + '\n')
 
     def get_password(self, site):
-        return self.password_dict[site]
+        try:
+            return self.password_dict[site]
+        except KeyError:
+            print(f"{site} was not yet added in your vault")
