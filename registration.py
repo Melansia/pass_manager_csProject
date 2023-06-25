@@ -6,33 +6,16 @@ from dir_check_create import create_directory
 pm = PassManager()
 
 
-def create_db(user_path="./Users/user_login.db"):
-    conn = sqlite3.connect(user_path)
-    cur = conn.cursor()
-
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
-    )""")
-
-    cur.close()
-
-
 def user_registration():
-    # Create Users directory and db if not exist
-    create_directory()
-    create_db()
     # Users database path
-    user_path = "./Users/user_login.db"
+    db_path = "./Users/user_login.db"
 
     # Getting user username and password
     username = input("Enter a username: ")
     password = input("Enter a password: ")
 
     # Connect to the user login database
-    conn = sqlite3.connect(user_path)
+    conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 
     # Check if the username already exists
@@ -64,9 +47,6 @@ def user_registration():
 
 
 def login_user():
-    # Create Users directory and db if not exist
-    create_directory()
-    create_db()
     # Users path
     user_path = "./Users/user_login.db"
     # Get user input for username and password
@@ -98,5 +78,5 @@ def login_user():
         return True
     else:
         print("Invalid password. Please try again.")
-
-    conn.close()
+        conn.close()
+        return False
