@@ -12,20 +12,20 @@ Time spend on debugging **Over 9K** hours.
 
 ## Functionality
 
-* Register a unique Profile and use the Login and Password in order to save password and then retrieve them back
-* Play with colorful icons in the default mode
+* Register a unique Profile and use of the Login and Password in order to get access to main menu
+* Use unique Login and Password in order to encrypt and save passwords in the created Profile and then retrieve them back when needed
 
 The following **required** functionality is completed:
 
 * [X] When the app starts, a staring menu is prompted with the options to "Register", "Login" or "Quit" the app
-* [X] Possibility to register a new Profile with a "Login" and "Password"
+* [X] Possibility to register a new Profile with a unique login and password
 * [X] Possibility to login into an existing previously created profile using the Profile login and password
-* [X] When registering a new Profile, each Profile is getting a unique symmetric encryption key that will be used for coding the passwords provided
+* [X] When registering a new Profile, each Profile is getting a unique symmetric encryption key that will be used for encrypting the passwords provided
 * [X] A CLI menu for an easier navigation through the app
 
 The following **extensions** are implemented:
 
-* [ ] 
+* [ ]
 * [ ] 
 
 ## Video Walk-through
