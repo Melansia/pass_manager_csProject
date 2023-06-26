@@ -1,11 +1,12 @@
 import sqlite3
+import os
 
 from registration import user_registration, login_user, pm
 from dir_check_create import create_directory
 
 
-def create_db(user_path="./Users/user_login.db"):
-    conn = sqlite3.connect(user_path)
+def create_db(path=f"{os.getcwd()}\\Users\\users.db"):
+    conn = sqlite3.connect(path)
     cur = conn.cursor()
 
     cur.execute("""
@@ -76,11 +77,10 @@ def successful_login():
 
 
 def main():
-    # Create users database at the default location
-    create_db()
-
     # Create Users directory in case if is not created at default location
     create_directory()
+    # Create users database at the default location
+    create_db()
 
     program_start()
 
