@@ -1,6 +1,6 @@
 # Password Manager
 
-## *Gregory L*
+## *Greg L*
 
 **PassAssistant**
 
@@ -21,7 +21,7 @@ The following **required** functionality is completed:
 * [X] Possibility to register a new Profile with a unique login and password
 * [X] Possibility to login into an existing previously created profile using the Profile login and password
 * [X] When registering a new Profile, each Profile is getting a unique symmetric encryption key that will be used for encrypting the passwords provided
-* [X] A CLI menu for an easier navigation through the app
+* [X] A CLI menu for navigation
 
 The following **extensions** are implemented:
 
@@ -33,6 +33,7 @@ The following **extensions** are implemented:
 Here's a walk-through of the program:
 
  <img src="" width=''> |
+Will be added soon!
 
 GIF created with [LICEcap](https://www.cockos.com/licecap/).
 GIF hosted on [Giphy](https://giphy.com).
