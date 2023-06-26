@@ -1,4 +1,5 @@
 import sqlite3
+import os
 import bcrypt
 from pass_manager import PassManager
 from dir_check_create import create_directory
@@ -6,9 +7,8 @@ from dir_check_create import create_directory
 pm = PassManager()
 
 
-def user_registration():
+def user_registration(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os.getcwd()}\\Users\\"):
     # Users database path
-    db_path = "./Users/user_login.db"
 
     # Getting user username and password
     username = input("Enter a username: ")
@@ -37,8 +37,7 @@ def user_registration():
     print(f"Hey, {username}, the registration was successful!")
     conn.close()
 
-    path = "./Users"
-    profile_path = f"{path}/{username}"
+    profile_path = f"{prof_path}{username}"
     create_directory(profile_path)
     pm.create_key(f"{profile_path}/{username}.key")
     pm.create_password_file(f"{profile_path}/{username}.json")
@@ -46,15 +45,14 @@ def user_registration():
     return True
 
 
-def login_user():
+def login_user(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os.getcwd()}\\Users\\"):
     # Users path
-    user_path = "./Users/user_login.db"
     # Get user input for username and password
     username = input("Enter your username: ")
     password = input("Enter your password: ")
 
     # Connect to the user login database
-    conn = sqlite3.connect(user_path)
+    conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 
     # Retrieve the stored hashed password for the entered username
@@ -70,10 +68,11 @@ def login_user():
     # Check if the entered password matches the stored hashed password
     if bcrypt.checkpw(password.encode(), stored_password[0]):
         print("Login successful!")
-        # Perform additional actions for the logged-in user
-        # For example, access the user's password storage, retrieve passwords, etc.
-        pass_file_path = f"./Users/{username}/{username}.json"
-        pm.load_key(f"./Users/{username}/{username}.key")
+        # Get path of the profile that was successful login
+        profile_path = prof_path
+        pass_file_path = f"{profile_path}{username}\\{username}.json"
+        # Load the key and the password file for the profile
+        pm.load_key(f"{profile_path}{username}\\{username}.key")
         pm.load_password_file(pass_file_path)
         return True
     else:
