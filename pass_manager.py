@@ -49,4 +49,4 @@ class PassManager:
         try:
             return self.password_dict[site]
         except KeyError:
-            print(f"{site} was not yet added in your vault")
+            return None

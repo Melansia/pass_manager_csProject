@@ -5,7 +5,7 @@ from registration import user_registration, login_user, pm
 from dir_check_create import create_directory
 
 
-def create_db(path=f"{os.getcwd()}\\Users\\users.db"):
+def create_db(path=f"{os.getcwd()}/Users/users.db"):
     conn = sqlite3.connect(path)
     cur = conn.cursor()
 
@@ -44,9 +44,11 @@ def program_start():
             if user_registration():
                 successful_login()
                 running = False
-        elif user_input == 'q' or 'Q':
+        elif user_input == 'q' or user_input == 'Q':
             running = False
             print("Bye!")
+        else:
+            print("Non existing command! Try 1, 2 or q|Q for quiting.")
 
 
 def successful_login():
@@ -66,10 +68,12 @@ def successful_login():
             site = input("Enter the site: ")
             password = input("Enter the password: ")
             pm.add_password(site, password)
+            print(f"\nPassword for {site} was saved successfully! You can find it in your vault.")
         elif user_input == '2':
             password_request = input("Password of what site do you search? ")
-            print(f"Password for {password_request} is {pm.get_password(password_request)}")
-        elif user_input == 'q' or 'Q':
+            get_pass = pm.get_password(password_request)
+            print(f"\nPassword for {password_request} is {get_pass if get_pass is not None else 'not yet created.'}")
+        elif user_input == 'q' or user_input == 'Q':
             running = False
             print("Existing the app. Bye!")
         else:

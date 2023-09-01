@@ -7,7 +7,7 @@ from dir_check_create import create_directory
 pm = PassManager()
 
 
-def user_registration(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os.getcwd()}\\Users\\"):
+def user_registration(db_path=f"{os.getcwd()}/Users/users.db", prof_path=f"{os.getcwd()}/Users/"):
     # Users database path
 
     # Getting user username and password
@@ -23,7 +23,7 @@ def user_registration(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os
     existing_user = cur.fetchone()
 
     if existing_user:
-        print("Username already exists. Please choose a different username.")
+        print("\nUsername already exists. Please choose a different username.")
         conn.close()
         return False
 
@@ -45,7 +45,7 @@ def user_registration(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os
     return True
 
 
-def login_user(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os.getcwd()}\\Users\\"):
+def login_user(db_path=f"{os.getcwd()}/Users/users.db", prof_path=f"{os.getcwd()}/Users/"):
     # Users path
     # Get user input for username and password
     username = input("Enter your username: ")
@@ -56,12 +56,11 @@ def login_user(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os.getcwd
     cur = conn.cursor()
 
     # Retrieve the stored hashed password for the entered username
-    # TODO: Check if the table is created
     cur.execute("SELECT password FROM users WHERE username = ?", (username,))
     stored_password = cur.fetchone()
 
     if not stored_password:
-        print("Invalid username. Please try again.")
+        print("\nInvalid username or password! Please try again.")
         conn.close()
         return False
 
@@ -70,9 +69,9 @@ def login_user(db_path=f"{os.getcwd()}\\Users\\users.db", prof_path=f"{os.getcwd
         print("Login successful!")
         # Get path of the profile that was successful login
         profile_path = prof_path
-        pass_file_path = f"{profile_path}{username}\\{username}.json"
+        pass_file_path = f"{profile_path}{username}/{username}.json"
         # Load the key and the password file for the profile
-        pm.load_key(f"{profile_path}{username}\\{username}.key")
+        pm.load_key(f"{profile_path}{username}/{username}.key")
         pm.load_password_file(pass_file_path)
         return True
     else:
