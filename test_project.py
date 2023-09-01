@@ -9,13 +9,12 @@ from registration import user_registration, login_user
 from dir_check_create import create_directory
 from project import program_start, create_db
 
-test_prof_path = f"{os.getcwd()}\\Test_Users\\"
-tes_db_path = f"{os.getcwd()}\\Test_Users\\test_db.db"
+test_prof_path = f"{os.getcwd()}/Test_Users/"
+tes_db_path = f"{os.getcwd()}/Test_Users/test_db.db"
 
 
 @pytest.fixture
 def setup_teardown():
-    # testing_path = f"{os.getcwd()}\\Test_Users"
     # Create Users directory
     create_directory(test_prof_path)
     # Create
