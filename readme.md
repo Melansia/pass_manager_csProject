@@ -12,7 +12,7 @@ Like a password recovery feature Like a password recovery feature and a UI. Howe
 
 Time spend on debugging **Over 9K** hours.
 
-## Video demontration
+## Video demonstration
 
 ### << [Watch the video](https://youtu.be/AY2mS6_4t7E) >>
 
